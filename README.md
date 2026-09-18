@@ -3,7 +3,7 @@ It is a Django service that ingests standard healthcare data (FHIR),sanitizes it
 HIPAA compliance, and exposes it securely to downstream services.
 
 ## Features
-- FHIR Patient intake: validates resourceType, a unique patient id, and birthDate and min age is 18
+- FHIR Patient intake: validates resourceType, a unique patient id, and birthDate and min age is 18 and also  background job welcome  email also getting printed 
 - Field-level encryption SSN and passport number are encrypted with cryptography and raw json    storage mask with ssn value and passport vale
 - Masked output: SSN is returned as ***-**-1234
 - when access the patient details  lookup records like user ip address and timestamp is stored 
@@ -77,6 +77,7 @@ response
 	"message": "Patient successfully created.",
 	"patient_id": "example-125"
 }
+and in background the welcome email is geting printed 
 
 3. Get patient details 
 

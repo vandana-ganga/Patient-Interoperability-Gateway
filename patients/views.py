@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Patient, AccessLog
 import threading
-
+from .task import send_welcome_email
 from .serializers import PatientInputSerializer, PatientResponseSerializer
 
 
@@ -16,12 +16,12 @@ class PatientInputView(APIView):
 		serializer.is_valid(raise_exception=True)
 		patient = serializer.save()
 		
-		# thread = threading.Thread(
-		#     target=send_welcome_email,
-		#     args=(patient,)
-		# )
+		thread = threading.Thread(
+			target=send_welcome_email,
+			args=(patient,)
+		)
 
-		# thread.start()
+		thread.start()
 
 		return Response(
 			{
